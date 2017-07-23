@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="2" skipped="0" failures="1" errors="0" time="0.009914" timestamp="2017-07-23T10:25:41+00:00" hostname="00b25c74a865">
+<testsuite name="rspec" tests="20" skipped="0" failures="1" errors="0" time="0.009914" timestamp="2017-07-23T10:25:41+00:00" hostname="00b25c74a865">
 <properties>
 <property name="seed" value="43908"/>
 </properties>
