@@ -13,4 +13,5 @@ expected false
 ./spec/bar_spec.rb:2:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
 <testcase classname="spec.foo_spec" name="foo should equal true" file="./spec/foo_spec.rb" time="0.000093"></testcase>
 <testcase classname="spec.error_spec" name="foo should equal true" file="./spec/error_spec.rb" time="0.000093"><error message="Error!!" type="MyCustomError">This is details.</error></testcase>
+<error>This is error</error>
 </testsuite>
