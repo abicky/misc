@@ -7,7 +7,20 @@ jobs:
     steps:
       - checkout
 
-      - run: mkdir /tmp/test-results && cp rspec.xml /tmp/test-results/
+      - type: cache-restore
+        key: gems-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle install -j4 --retry=3 --path vendor/bundle
+
+      - type: cache-save
+        key: gems-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      - run: bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec/junit.xml --format progress
 
       - type: store_test_results
+        path: /tmp/test-results
+
+      - type: store_artifacts
         path: /tmp/test-results
