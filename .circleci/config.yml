@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.1
     working_directory: ~/build
+    environment:
+      CIRCLE_NODE_TOTAL: 2
     steps:
       - checkout
 
