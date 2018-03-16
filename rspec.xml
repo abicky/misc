@@ -3,28 +3,6 @@
 <properties>
 <property name="seed" value="43908"/>
 </properties>
-<testcase classname="spec.bar_spec" name="foo should equal false" file="./spec/bar_spec.rb" time="0.022088"><failure message="
-expected false
-     got true
-" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: it { expect(true).to be false }
-
-  expected false
-       got true
-./spec/bar_spec.rb:2:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
-<testcase classname="spec.foo_spec" name="foo should include :d" file="./spec/foo_spec.rb" time="0.002720"><failure message="expected [:a, :b, :c] to include :d
-Diff:\u001b[0m
-\u001b[0m\u001b[34m@@ -1,2 +1,2 @@
-\u001b[0m\u001b[31m-[:d]
-\u001b[0m\u001b[32m+[:a, :b, :c]
-\u001b[0m
-" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: it { expect(%i[a b c]).to include(:d) }
-
-  expected [:a, :b, :c] to include :d
-  Diff:\u001b[0m
-  \u001b[0m\u001b[34m@@ -1,2 +1,2 @@
-  \u001b[0m\u001b[31m-[:d]
-  \u001b[0m\u001b[32m+[:a, :b, :c]
-  \u001b[0m
-  
-./spec/foo_spec.rb:2:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.bar_spec" name="foo should equal false" file="./spec/bar_spec.rb" time="0.022088"></testcase>
+<testcase classname="spec.foo_spec" name="foo should include :d" file="./spec/foo_spec.rb" time="0.002720"></testcase>
 </testsuite>
