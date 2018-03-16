@@ -8,6 +8,9 @@ jobs:
       - checkout
 
       - run: mkdir -p /tmp/test-results/rspec && cp *.xml /tmp/test-results/rspec/
+      - run: circleci tests glob spec/*_spec.rb | circleci tests split --split-by=timings --index=0 --total=2
 
       - type: store_test_results
         path: /tmp/test-results
+
+      - run: ls $CIRCLE_INTERNAL_TASK_DATA | true
