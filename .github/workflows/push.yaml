@@ -1,0 +1,45 @@
+name: Validations
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+  push:
+    paths-ignore:
+      - 'README.md'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    environment: ci
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+        with:
+          go-version-file: 'go.mod'
+
+      - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
+        with:
+          terraform_wrapper: false
+
+      # `go test` uses only a high-confidence subset of go vet, so execute also `go vet`
+      - run: make vet
+
+      - name: Format code
+        run: |
+          make fmt
+          git diff --exit-code || \
+            (echo; echo "Unexpected difference in directories after formatting code. Run 'make fmt' command and commit."; exit 1)
+
+      - name: Generate code
+        run: |
+          make generate
+          git diff --exit-code || \
+            (echo; echo "Unexpected difference in directories after code generation. Run 'make generate' command and commit."; exit 1)
+
+      - run: make build
