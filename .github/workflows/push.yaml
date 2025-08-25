@@ -2,6 +2,7 @@ name: Push
 
 on:
   push:
+  pull_request:
 
 permissions:
   contents: read
@@ -11,7 +12,7 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    environment: production
+    # environment: production
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: test
