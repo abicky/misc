@@ -25,6 +25,7 @@ jobs:
           echo 'This is secret'
           echo $BAR
           echo $BAR | tr ' ' '-'
+          echo $GITHUB_SHA
           echo done
         env:
           FOO: ${{ secrets.FOO }}
