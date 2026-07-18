@@ -26,6 +26,7 @@ jobs:
           echo $BAR
           echo $BAR | tr ' ' '-'
           echo done
+          echo master
         env:
           FOO: ${{ secrets.FOO }}
           BAR: ${{ secrets.BAR }}
