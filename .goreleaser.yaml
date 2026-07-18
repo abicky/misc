@@ -1,0 +1,43 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy # Download all the packages listed in go.sum
+    - go install github.com/Songmu/gocredits/cmd/gocredits@ed7b95e15f71633331449fcd208f2f512e275412 # v0.4.0
+    - gocredits -w .
+builds:
+    id: all
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -X github.com/abicky/misc.version={{.Version}} -X github.com/abicky/misc/cmd.revision={{.ShortCommit}}
+archives:
+  - id: all
+    ids:
+      - all
+    # Exclude the version to download the latest version via https://github.com/abicky/misc/releases/latest/download/$archive_name
+    name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}'
+    files:
+      - README.md
+      - CREDITS
+    wrap_in_directory: true
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  version_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+# release:
+#   use_existing_draft: true
