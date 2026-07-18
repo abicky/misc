@@ -29,3 +29,6 @@ jobs:
         env:
           FOO: ${{ secrets.FOO }}
           BAR: ${{ secrets.BAR }}
+      - run: |
+          echo hell
+        if: contains(github.ref, 'tags/v')
