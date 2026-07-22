@@ -39,5 +39,3 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
-# release:
-#   use_existing_draft: true
