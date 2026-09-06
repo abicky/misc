@@ -43,4 +43,4 @@ release:
   # Keep the release mutable until every publishing step succeeds.
   draft: true
   # Make the release workflow retriable
-  # replace_existing_draft: true
+  replace_existing_draft: true
